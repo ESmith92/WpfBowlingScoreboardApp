@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:WpfBowling.Views"
         xmlns:viewmodel ="clr-namespace:WpfBowling.Models"
         mc:Ignorable="d"
-        Title="GlassBowls" Height="160" Width="850">
+        Title="GlassBowls" Height="200" Width="850">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>

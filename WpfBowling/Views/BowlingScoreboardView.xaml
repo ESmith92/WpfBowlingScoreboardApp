@@ -10,14 +10,22 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolTovisible" />
     </UserControl.Resources>
-    <Grid HorizontalAlignment="Center">
+    <Grid HorizontalAlignment="Center"
+          FocusManager.IsFocusScope="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0"
+            Text="backspace to reset value: [ X|x = Strike ]  [ '/' or total>9 = Spare ]"/>
+        
         <!-- Bowling Frame Grid -->
         <!-- Iterate through each FrameObject and populate -->
-        <ItemsControl ItemsSource="{Binding BowlingFrames}">
+        <ItemsControl ItemsSource="{Binding BowlingFrames}"
+                      Focusable="False"
+                      Grid.Row="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>
@@ -35,9 +43,12 @@
                                 <TextBlock Style="{StaticResource FrameLabel}" Text="{Binding FrameIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <StackPanel Orientation="Horizontal">
                                     <!-- Slot 1 -->
-                                    <TextBox Text="{Binding FirstThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Transparent"/>
+                                    <TextBox Text="{Binding FirstThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                             BorderBrush="Transparent" 
+                                             KeyUp="TextBox_KeyUp"/>
                                     <!-- Slot 2 -->
-                                    <TextBox Text="{Binding SecondThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBox Text="{Binding SecondThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                             KeyUp="TextBox_KeyUp"/>
                                 </StackPanel>
                                 <!-- FrameScore -->
                                 <TextBlock Style="{StaticResource ScoreLabel}" Text="{Binding CurrentScore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -54,9 +65,12 @@
                                 <TextBlock Style="{StaticResource FrameLabel}" Text="10"/>
                                 <StackPanel Orientation="Horizontal">
                                     <!--Slot 1-->
-                                    <TextBox Text="{Binding FirstThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Transparent"/>
+                                    <TextBox Text="{Binding FirstThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                             BorderBrush="Transparent"
+                                             KeyUp="TextBox_KeyUp2"/>
                                     <!--Slot 2-->
-                                    <TextBox Text="{Binding SecondThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBox Text="{Binding SecondThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             KeyUp="TextBox_KeyUp2"/>
                                     <!--Slot 3-->
                                     <TextBox Text="{Binding ThirdThrow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 </StackPanel>
